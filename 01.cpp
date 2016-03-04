@@ -5,27 +5,32 @@ using namespace std;
 
 int main()
 {
+  int n,wybor;
 
-int n,m,zakres;
-
-  cout << "Podaj ilosc wierszy tablicy: ";
-  cin >> n;
-  cout << "Podaj ilosc kolumn tablicy: ";
-  cin >> m;
-  cout << "Podaj zakres tablicy 0- ";
-  cin >> zakres;
-srand(time(0));
-  int **tablica = new int *[n];
-  for (int i =0; i < n; i++)
+cout << "1. Tworzenie tablicy" << endl;
+cout << "2. Zakończ" << endl;
+cin >> wybor;
+switch (wybor) {
+  case(1):
   {
-    tablica[i] = new int [m];
-    for (int j = 0; j < m; j++)
-    tablica[i][j]=rand()%zakres;
-  }
-  for (int i=0; i<n; i++, cout << endl)
-  for (int j=0; j<m; j++)
-  cout << tablica[i][j] << '\t';
+    cout << "Podaj ile ma byc liczb w tablicy: ";
+    cin >> n;
+    cout << "Podaj liczbe do wpisania: ";
+    cin >> k;
+int *tablica = new int [n];
 
-  cout << "Najwieksza wartosc w tablicy to:" << endl;
-  
+for(int i=0; i<n; i++)
+tablica[i] = i;
+
+for(int i=0; i<n; i++)
+cout << tablica[i] << endl;
+
+delete [] tablica;
+tablica = NULL;
+  }
+  case(2):
+  {
+    exit(0);
+  }
+}
 }
