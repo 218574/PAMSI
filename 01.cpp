@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
   int n,wybor;
-
+srand(time(NULL));
 cout << "1. Tworzenie tablicy" << endl;
 cout << "2. Zakończ" << endl;
 cin >> wybor;
@@ -19,7 +19,7 @@ switch (wybor) {
 int *tablica = new int [n];
 
 for(int i=0; i<n; i++)
-tablica[i] = i;
+tablica[i] = rand();
 
 for(int i=0; i<n; i++)
 cout << tablica[i] << endl;
