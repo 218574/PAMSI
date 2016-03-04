@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -16,15 +17,18 @@ switch (wybor) {
     cout << "Podaj ile ma byc liczb w tablicy: ";
     cin >> n;
 
-int *tablica = new int [n];
+clock_t start = clock(); // Rozpoczencie odmierzania czasu
+
+int *tablica = new int [n]; //Tworzenie tablicy dynamicznej o okreslonym rozmiarze.
 
 for(int i=0; i<n; i++)
-tablica[i] = rand();
+tablica[i] = rand(); // Wypelnienie tablicy losowymi liczbami
 
 for(int i=0; i<n; i++)
 cout << tablica[i] << endl;
+cout << "Czas wykonania programu: " << (clock() - start) << "ms" << endl; // zakonczenie odmierzania czasu
 
-delete [] tablica;
+delete [] tablica;//Usuwanie tablicy
 tablica = NULL;
   }
   case(2):
