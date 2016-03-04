@@ -15,8 +15,7 @@ switch (wybor) {
   {
     cout << "Podaj ile ma byc liczb w tablicy: ";
     cin >> n;
-    cout << "Podaj liczbe do wpisania: ";
-    cin >> k;
+
 int *tablica = new int [n];
 
 for(int i=0; i<n; i++)
