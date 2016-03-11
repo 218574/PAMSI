@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <iomanip>
 
-#define MAX_SIZE 1000000000 // maksymalny rozmiar tablicy
+#define MAX_SIZE 100000000 // maksymalny rozmiar tablicy
 
 using namespace std;
 
