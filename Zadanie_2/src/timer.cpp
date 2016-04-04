@@ -1,4 +1,4 @@
-#include "timer.hh"
+#include "../inc/timer.hh"
 
 
 void Timer::start(void) {

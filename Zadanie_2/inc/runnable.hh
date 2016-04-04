@@ -7,7 +7,7 @@ using namespace std;
 class Runnable
 {
 public:
-	virtual void prepare()=0;
+	//virtual void prepare()=0;
 	virtual void pack()=0;
 
 };

@@ -1,4 +1,3 @@
-
 #ifndef TIMER_HH
 #define TIMER_HH
 
@@ -19,7 +18,7 @@ public:
     void stop(void);
     long double getElapsedTimeMs(void);
 
-    
+
 };
 
 
