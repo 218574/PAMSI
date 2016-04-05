@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <iomanip>
 
-//#include "../inc/runnable.hh"
+#include "../inc/runnable.hh"
 #include "../inc/array.hh"
 #include "../inc/timer.hh"
 

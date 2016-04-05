@@ -13,7 +13,6 @@ class Array: public Runnable
 	{
 	private:
 		int *array;
-		int *supp_array;
 		int size = 10;
         int index = -1;
 
@@ -22,12 +21,11 @@ class Array: public Runnable
 		public:
 			Array(){array = new int [size];}
 			~Array(){delete [] array;}
-			//int size(){return index++;}
 
 			void add_1(int n);
 			void add_2(int n);
 			void add_3(int n);
-			virtual void pack();
+			void pack();
 	};
 
 	#endif

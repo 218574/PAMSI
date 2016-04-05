@@ -2,6 +2,7 @@ CCFLAGS = -Wall -pedantic -std=c++11 -g
 
 start: Zadanie2
 	./Zadanie2
+
 Zadanie2: obj/array.o obj/timer.o obj/runnable.o src/main.cpp
 	g++ $(CCFLAGS) src/main.cpp obj/array.o obj/runnable.o obj/timer.o -o Zadanie2
 
