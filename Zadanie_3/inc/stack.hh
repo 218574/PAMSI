@@ -2,6 +2,7 @@
 #define STACK_HH 
 
 #include "list.hh"
+#include "Ilist.hh"
 
 #include <iostream>
 #include <cstdlib>
@@ -13,25 +14,16 @@
 
 using namespace std;
 
-class Stack
+class Stack: public List
 {
-	  private:
-    int stack_size;      
-    int number;
-    int *stack_array;    
+     Stack();
+     ~Stack();
 
-  public:
-    
-    Stack(int x); 
-    ~Stack(){delete [] stack_array;}    
+     void push_front(int v);
+     void pop_front();
+     void print_stack();
 
-    bool empty(void);
-    int  top(void);
-
-    void push(int element);
-    void pop(void);
-
-    void add_size();
+     ListEl * find_first(int v);
 };
 
 #endif

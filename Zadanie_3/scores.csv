@@ -1,0 +1,70 @@
+Przeszukiwanie listy 
+Przeszukiwanie 10 elementow
+0.002983
+0.001365
+0.000989
+0.000842
+0.000779
+0.000701
+0.000614
+0.000505
+0.00049
+0.000481
+Srednia z 10 pomiarow: 0.0009749
+
+Przeszukiwanie listy 
+Przeszukiwanie 100 elementow
+0.001266
+0.001362
+0.001314
+0.0013
+0.001344
+0.001302
+0.001323
+0.001922
+0.001985
+0.001781
+Srednia z 10 pomiarow: 0.0014899
+
+Przeszukiwanie listy 
+Przeszukiwanie 1000 elementow
+0.009801
+0.009263
+0.008971
+0.008935
+0.008978
+0.009001
+0.00892
+0.008897
+0.008941
+0.008938
+Srednia z 10 pomiarow: 0.0090645
+
+Przeszukiwanie listy 
+Przeszukiwanie 1000000 elementow
+5.43879
+5.4751
+5.47358
+5.45882
+5.45745
+5.52684
+5.46381
+5.45653
+5.43257
+5.4662
+Srednia z 10 pomiarow: 5.46497
+
+Przeszukiwanie listy 
+Przeszukiwanie 100000000 elementow
+544.581
+544.516
+544.39
+543.552
+551.366
+552.033
+551.874
+551.476
+551.828
+550.975
+Srednia z 10 pomiarow: 548.659
+

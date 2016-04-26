@@ -1,63 +1,60 @@
+//#include "../inc/list.hh"
 #include "../inc/queue.hh"
 
-using namespace std;
+//------------------------------------
+// Metody obiektu listy dwukierunkowej
+//------------------------------------
 
-Queue::Queue(int x)
+// Inicjuje pola zmiennej listy
+//-----------------------------
+Queue::Queue()
 {
-	queue_size = x;
-	queue_array = new int [x];
-	number=number_front=number_back = 0;
+  head  = tail  = NULL;
+  count = 0;
 }
 
-bool Queue::empty(void)
+// Usuwa listę z pamięci
+//----------------------
+Queue::~Queue()
 {
-	return !number;
+  while(count) pop_front();
 }
 
-void Queue::push(int element)
+// Wyświetla zawartość elementów listy
+//----------------------------------------------
+void Queue::print_queue()
 {
-	int i;
-  	if(number < queue_size)
-  		{
-   			 i = number_back + number_front++;
-   			 if(i >= queue_size) i -= queue_size;
-   			 queue_array[i] = element;
- 		}
- 		else
- 			{
-	  		  (*this).add_size();
-	    		i = number_back + number_front++;
-	    if(i >= queue_size) i -= queue_size;
-	    queue_array[i] = element;
+  ListEl * p;
+
+  cout << setw(3) << count << " : ";
+  p = head;
+  while(p)
+  {
+    cout << p->data << ' ';
+    p = p->next;
   }
+  cout << endl;
 }
 
-void Queue::pop(void)
+// Dodaje nowy element na koniec kolejki
+//----------------------------------------------
+void Queue::push_back(int v)
 {
-	if(number_front)
-  		{
-    	number_front--;
-    	number_back++;
-    	if(number_front == queue_size) number_front = 0;
-  }
+  ListEl * p;
+
+  p = new ListEl;
+  p->data = v;
+  p->next = NULL;
+  p->prev = tail;
+  tail  = p;
+  count++;
+  if(p->prev) p->prev->next = p;
+  else head = p;
 }
 
-int Queue::front_element()
+// Usuwa element z początku kolejki
+//-------------------------------
+void Queue::pop_front()
 {
-	  if(number) return queue_array[number];
-  		return -MAX_INT;
-}
-
-void Queue::add_size()
-{
-	int new_size = 10*queue_size;
-	int *supp_array = new int [new_size];
-
-	for(int i=0; i<queue_size; i++)
-	{
-		supp_array[i] = queue_array[i];
-	}
-	queue_size = new_size;
-	delete [] queue_array;
-	queue_array = supp_array; 
+  if(count) remove(head);
 }

@@ -1,5 +1,5 @@
 #include "../inc/test.hh"
-
+j
 using namespace std;
 
 void Test::generate_numbers(int how_many, int field)
@@ -62,5 +62,4 @@ void Test::test_list(List *test_pointer, int laps, int how_many_numbers)
 	} else cout << "Blad dostepu do pliku!" << endl;
 	
 	scores.close();
-}
-
+} 

@@ -1,50 +1,60 @@
+//#include "../inc/list.hh"
 #include "../inc/stack.hh"
 
-using namespace std;
+//------------------------------------
+// Metody obiektu listy dwukierunkowej
+//------------------------------------
 
-Stack::Stack(int x)
+// Inicjuje pola zmiennej listy
+//-----------------------------
+Stack::Stack()
 {
-	stack_size = x;
-	stack_array = new int [x];
-	number = 0;
+  head  = tail  = NULL;
+  count = 0;
 }
 
-bool Stack::empty(void)
+// Usuwa listę z pamięci
+//----------------------
+Stack::~Stack()
 {
-	return !number;
+  while(count) pop_front();
 }
 
-void Stack::push(int element)
+// Wyświetla zawartość elementów listy
+//----------------------------------------------
+void Stack::print_stack()
 {
-	 if(number < stack_size) stack_array[number++] = element;
-  else
+  ListEl * p;
+
+  cout << setw(3) << count << " : ";
+  p = head;
+  while(p)
   {
-	  (*this).add_size();
-	  stack_array[number++] = element;
+    cout << p->data << ' ';
+    p = p->next;
   }
+  cout << endl;
 }
 
-void Stack::pop()
+// Dodaje nowy element na początek stosu
+//------------------------------------------------
+void Stack::push_front(int v)
 {
-	if(number) number--;
+  ListEl * p;
+
+  p = new ListEl;
+  p->data = v;
+  p->prev = NULL;
+  p->next = head;
+  head  = p;
+  count++;
+  if(p->next) p->next->prev = p;
+  else tail = p;
 }
 
-int Stack::top()
+// Usuwa element z początku stosu
+//-------------------------------
+void Stack::pop_front()
 {
-	  if(number) return stack_array[number - 1];
-  		return -MAX_INT;
-}
-
-void Stack::add_size()
-{
-	int new_size = 10*stack_size;
-	int *supp_array = new int [new_size];
-
-	for(int i=0; i<stack_size; i++)
-	{
-		supp_array[i] = stack_array[i];
-	}
-	stack_size = new_size;
-	delete [] stack_array;
-	stack_array = supp_array; 
+  if(count) remove(head);
 }

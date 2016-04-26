@@ -1,41 +1,43 @@
 #ifndef LIST_HH
-#define LIST_HH 
+#define LIST_HH
 
 #include <iostream>
+#include <iomanip>
 #include <cstdlib>
-#include <fstream>
-#include <unistd.h>
-#include <string>
-
-const int MAX_INT = -2147483647;
+#include <ctime>
+#include "Ilist.hh"
 
 using namespace std;
 
-class List
+// Element listy
+//--------------
+struct ListEl
 {
-private:
-	int list_size;  // rozmiar listy
-	int front_pointer; // wskaznik poczatek
-	int back_pointer; // wskaznik koniec
-	int number; // ilosc elementow na liscie
-	int *list_array; //przechowywanie danych jako lista jednokierunkowa
-public:
+  ListEl * next;   // następnik
+  ListEl * prev;   // poprzednik
+  int data;
+};
 
+// Definicja obiektu listy dwukierunkowej
+//---------------------------------------
+class List: public IList
+{
+  public:
+    ListEl * head;  // początek listy
+    ListEl * tail;  // koniec listy
+    unsigned count;  // licznik elementów
 
-	List(int array_size);
-	~List(){delete [] list_array;}
-
-	bool empty(void);
-
-	//void push_front(int element);
-	void pop_front(void);
-	int front_element(void);
-
-	void push_back(int element);
-	void pop_back(void);
-
-	void add_size();
-	
+    List();         // konstruktor
+    ~List();        // destruktor
+    void print_list() ;
+    void push_front(int v);
+    void push_back(int v);
+    void insert_before(ListEl * e, int v);
+    void insert_after(ListEl * e, int v);
+    void remove(ListEl * e);
+    void pop_front();
+    void pop_back();
+    ListEl * find_first(int v);
 };
 
 #endif

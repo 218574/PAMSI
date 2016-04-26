@@ -2,6 +2,7 @@
 #define QUEUE_HH 
 
 #include "list.hh"
+#include "Ilist.hh"
 
 #include <iostream>
 #include <cstdlib>
@@ -13,25 +14,16 @@
 
 using namespace std;
 
-class Queue
+class Queue: public List
 {
-	  private:
-    int queue_size;      
-    int number, number_front, number_back;
-    int *queue_array;    
+	 Queue();
+     ~Queue();
 
-  public:
-    
-    Queue(int x); 
-    ~Queue(){delete [] queue_array;}    
+     void push_back(int v);
+     void pop_front();
+     void print_queue();
 
-    bool empty(void);
-    int  front_element(void);
-
-    void push(int element);
-    void pop(void);
-
-    void add_size();
+     ListEl * find_first(int v);
 };
 
 #endif

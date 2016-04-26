@@ -1,77 +1,145 @@
 #include "../inc/list.hh"
 
-using namespace std;
+//------------------------------------
+// Metody obiektu listy dwukierunkowej
+//------------------------------------
 
-List::List(int x)
+// Inicjuje pola zmiennej listy
+//-----------------------------
+List::List()
 {
-	list_size=x;
-	list_array = new int [x];
-	front_pointer=back_pointer=number=0;
+  head  = tail  = NULL;
+  count = 0;
 }
 
-bool List::empty(void)
+// Usuwa listę z pamięci
+//----------------------
+List::~List()
 {
-	return !number;
+  while(count) pop_front();
 }
 
-//List::push_front(int element){};
-
-void List::push_back(int element)
+// Wyświetla zawartość elementów listy
+//----------------------------------------------
+void List::print_list()
 {
-	int i;
-	if(number < list_size)
-	{
-		i = back_pointer + number++;
-		if(i >=list_size) i -= list_size;
-		list_array[i] = element;
-	}
-	else
-	{
-		(*this).add_size();
-		i = back_pointer + number++;
-		if(i >= list_size) i -= list_size;
-		list_array[i] = element;
-	}
+  ListEl * p;
+
+  cout << setw(3) << count << " : ";
+  p = head;
+  while(p)
+  {
+    cout << p->data << ' ';
+    p = p->next;
+  }
+  cout << endl;
 }
 
-void List::pop_back()
+// Dodaje nowy element na początek listy
+//------------------------------------------------
+void List::push_front(int v)
 {
-	if(number)
-	{
-		number--;
-		back_pointer--;
-		if(back_pointer == list_size) back_pointer = 0;
-	}
+  ListEl * p;
+
+  p = new ListEl;
+  p->data = v;
+  p->prev = NULL;
+  p->next = head;
+  head  = p;
+  count++;
+  if(p->next) p->next->prev = p;
+  else tail = p;
 }
 
+// Dodaje nowy element na koniec listy
+//----------------------------------------------
+void List::push_back(int v)
+{
+  ListEl * p;
+
+  p = new ListEl;
+  p->data = v;
+  p->next = NULL;
+  p->prev = tail;
+  tail  = p;
+  count++;
+  if(p->prev) p->prev->next = p;
+  else head = p;
+}
+
+// Dodaje nowy element przed wybranym
+//-----------------------------------
+void List::insert_before(ListEl * e, int v)
+{
+  ListEl * p;
+
+  if(e == head) push_front(v);
+  else
+  {
+    p = new ListEl;
+    p->data = v;
+    p->next = e;
+    p->prev = e->prev;
+    count++;
+    e->prev->next = p;
+    e->prev = p;
+  }
+}
+
+// Dodaje nowy element za wybranym
+//--------------------------------
+void List::insert_after(ListEl * e, int v)
+{
+  ListEl * p;
+
+  if(e == tail) push_back(v);
+  else
+  {
+    p = new ListEl;
+    p->data = v;
+    p->next = e->next;
+    p->prev = e;
+    count++;
+    e->next->prev = p;
+    e->next = p;
+  }
+}
+
+// Usuwa wybrany element z listy
+//------------------------------
+void List::remove(ListEl * e)
+{
+  count--;
+  if(e->prev) e->prev->next = e->next;
+  else        head = e->next;
+  if(e->next) e->next->prev = e->prev;
+  else        tail = e->prev;
+  delete e;
+}
+
+// Usuwa element z początku listy
+//-------------------------------
 void List::pop_front()
 {
-	if(number)
-	{
-		number--;
-		front_pointer++;
-		if(front_pointer == list_size){
-			front_pointer = 0;
-		}
-	}
+  if(count) remove(head);
 }
 
-int List::front_element(void)
+// Usuwa element z końca listy
+//----------------------------
+void List::pop_back()
 {
-  if(number) return list_array[front_pointer];
-  return -MAX_INT;
+  if(count) remove(tail);
 }
 
-void List::add_size()
+// Wyszukuje pierwsze wystąpienie elementu v
+//------------------------------------------
+ListEl *List::find_first(int v)
 {
-	int new_size = 10*list_size;
-	int *supp_array = new int [new_size];
-
-	for(int i=0; i<list_size; i++)
-	{
-		supp_array[i] = list_array[i];
-	}
-	list_size = new_size;
-	delete [] list_array;
-	list_array = supp_array; 
+  ListEl * p;
+  push_back(v);   // wstawiamy wartownika na koniec listy
+  p = head;
+  while(p->data != v) p = p->next;
+  if(p == tail) p = NULL;
+  pop_back();     // usuwamy wartownika
+  return p;
 }
