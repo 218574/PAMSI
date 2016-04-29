@@ -14,10 +14,10 @@ bool Graf::search(int x, int y)		//wykorzystuje listy
      support=Lists[x] ;   //szuka wśród sąsiadów x  
      while(support!=NULL)  //dopóki nie sprawdzi wszystkich
      {           
-         if((*support).Index()==u)
+         if((*support).Index()==x)
          {    
-            uPrev=(*support).GetPrev();
-            uNext=(*support).GetNext();
+            xPrev=(*support).GetPrev();
+            xNext=(*support).GetNext();
             return true;
          }
          support=(*support).GetNext();
@@ -28,10 +28,10 @@ bool Graf::search(int x, int y)		//wykorzystuje listy
      hand=Lists[y] ;   //szuka wśród sąsiadów y  
      while(hand!=NULL)  //dopóki nie sprawdzi wszystkich
      {           
-         if((*hand).Index()==v)
+         if((*hand).Index()==y)
          {    
-            vPrev=(*hand).GetPrev();
-            vNext=(*hand).GetNext();
+            yPrev=(*hand).GetPrev();
+            yNext=(*hand).GetNext();
             return true;
          }
          hand=(*hand).GetNext();
