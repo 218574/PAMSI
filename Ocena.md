@@ -34,8 +34,28 @@ Ocena: 4
 
 Brak sprawozdania
 
-Ocena: 2
+Poprawione, sprawozdanie wykonane poprawnie.
+Ocena: 4,5
 
 # Lab5 - sortowanie
 
 # Lab6 - tablica asocjacyjna
+
+Liczba bucketow dobrana na stale, bez powiekszania i rehashowania.
+
+Ocena: 4
+
+# Lab7 - drzewa
+
+Ocena: 5
+
+# Lab8 - grafy (dfs,bfs)
+
+Wnioski zbyt daleko idące. Brak omówienia złożoności obliczeniowej.
+
+Ocena: 4,5
+
+# Lab9 - grafy (b&b)
+
+Brak zad.
+Ocena : 2
